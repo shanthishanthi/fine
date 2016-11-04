@@ -8,8 +8,8 @@
 #include "addressbookview.h"
 #include "contact.h"
 #include "sqliteutils.h"
-#include <Qtsql>
-#include <QSqlDatabase>
+//#include <Qtsql>
+//#include <QSqlDatabase>
 /***********************************************************************
     Class: SQLiteDataSource
 
