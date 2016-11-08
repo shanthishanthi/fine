@@ -7,12 +7,12 @@ CONFIG+=qt
 CONFIG+=debug
 CONFIG+=warn_on
 MOC_DIR=src/tmp
-//LIBS+=-lsqlite3
+#LIBS+=-lsqlite3
+QT +=  sql widgets
 TEMPLATE = app
 TARGET = address-book
 DEPENDPATH += src
 INCLUDEPATH += . src
-QT += sql widgets
 
 # Input
 HEADERS += src/addressbookcontroller.h \
@@ -29,10 +29,9 @@ HEADERS += src/addressbookcontroller.h \
            src/qteditcontactdialog.h \
            src/qterrordialog.h \
            src/sqlitedatasource.h \
-           src/sqliteutils.h\src\
-src/sqlite3.h \
-    src/sqliteutils.h
-
+           src/sqliteutils.h \
+    src/sqlite3.h
+src/sqlite3.h
 SOURCES += src/addressbookcontroller.cpp \
            src/contact.cpp \
            src/dummydatasource.cpp \
@@ -45,5 +44,5 @@ SOURCES += src/addressbookcontroller.cpp \
            src/qteditcontactdialog.cpp \
            src/qterrordialog.cpp \
            src/sqlitedatasource.cpp \
-           src/sqliteutils.cpp\
-src/sqlite3.c
+           src/sqliteutils.cpp \
+src/sqlite3.c \
