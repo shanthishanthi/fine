@@ -45,25 +45,31 @@ void QtAddressBookGUI::createWidgets()
     editContactButton = new QPushButton("Edit");
     deleteContactButton = new QPushButton("Delete");
     findContactButton = new QPushButton("Find");
+    quitContactButton = new QPushButton("Quit");
 
     newContactButton->setObjectName(QString::fromUtf8("newContactButton"));
-    newContactButton->setIcon(QIcon(QPixmap("E:/gitfolder/address-book-master/Tulips.jpg")));
+    newContactButton->setIcon(QIcon(QPixmap("E:/gitfolder/add-book/Tulips.jpg")));
 
 
     editContactButton->setObjectName(QString::fromUtf8("editContactButton"));
-    editContactButton->setIcon(QIcon(QPixmap("E:/gitfolder/address-book-master/Tulips.jpg")));
+    editContactButton->setIcon(QIcon(QPixmap("E:/gitfolder/add-book/Tulips.jpg")));
 
     deleteContactButton->setObjectName(QString::fromUtf8("editContactButton"));
-    deleteContactButton->setIcon(QIcon(QPixmap("E:/gitfolder/address-book-master/Tulips.jpg")));
+    deleteContactButton->setIcon(QIcon(QPixmap("E:/gitfolder/add-book/Tulips.jpg")));
 
     findContactButton->setObjectName(QString::fromUtf8("newContactButton"));
-    findContactButton->setIcon(QIcon(QPixmap("E:/gitfolder/address-book-master/Tulips.jpg")));
+    findContactButton->setIcon(QIcon(QPixmap("E:/gitfolder/add-book/Tulips.jpg")));
+
+    quitContactButton = new QPushButton("Quit");
+    quitContactButton->setIcon(QIcon(QPixmap("E:/gitfolder/add-book/Tulips.jpg")));
+
 
     QHBoxLayout *buttonLayout = new QHBoxLayout();
     buttonLayout->addWidget(newContactButton);
     buttonLayout->addWidget(editContactButton);
     buttonLayout->addWidget(deleteContactButton);
     buttonLayout->addWidget(findContactButton);
+    buttonLayout->addWidget(quitContactButton);
 
     QVBoxLayout *rightSideLayout = new QVBoxLayout();
     rightSideLayout->addWidget(detailView);
@@ -87,6 +93,9 @@ void QtAddressBookGUI::createWidgets()
 
     connect(editContactButton, SIGNAL(clicked()),
             this, SLOT(editContact()));
+
+    connect(quitContactButton, SIGNAL (clicked()),
+            this, SLOT(quitContact()));
 
     //tell the sub-widgets to refresh their data from
     //
@@ -220,5 +229,10 @@ void QtAddressBookGUI::deleteContact()
         delete errDialog;
         return;
     }
+}
+void QtAddressBookGUI::quitContact()
+{
+
+    close();
 }
 

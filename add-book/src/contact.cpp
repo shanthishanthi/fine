@@ -12,6 +12,7 @@ bool Contact::isValidToAdd() const
     bool hasNames = !(firstName.empty() || lastName.empty());
 
     if(hasNames && !phoneNumber.empty())
+
     {
         return true;
     }
@@ -37,4 +38,29 @@ bool Contact::isEmpty() const
         return false;
     }
 }
-    
+bool Contact::isvalidPhone() const
+{
+    bool length = (phoneNumber.length()==10);
+    int num = 1;
+    if (length)
+    {
+        for(int i=0;i<10;i++)
+        {
+            if(!isdigit(phoneNumber[i]))
+                num=0;
+        }
+        if(num==1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        return false;
+    }
+}
+

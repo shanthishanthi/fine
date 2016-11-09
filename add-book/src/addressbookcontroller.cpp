@@ -25,8 +25,8 @@ AddressBookController::~AddressBookController()
 ErrorInfo AddressBookController::submitContact(const Contact &c)
 {    
     
-    if(!c.isValidToAdd())
-    {
+    if(!c.isValidToAdd()|| !c.isvalidPhone())
+            {
         return ErrorInfo(ERR_CONTACT_NOT_VALID,
                         "Invalid Contact. Make sure all required fields are filled.");
     }

@@ -32,7 +32,7 @@ class Contact
         Contact():id(0), firstName(), lastName(), phoneNumber(), email(),city(){ }
         bool isValidToAdd() const;
         bool isEmpty() const;
-
+        bool isvalidPhone() const;
 };
 
 #endif
