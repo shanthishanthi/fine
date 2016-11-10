@@ -90,3 +90,24 @@ Contact::ContactId QtContactList::getSelectedContactId()
     
     return selectedContactId;
 }
+Contact::ContactId QtContactList::searchList(std::string name)
+{
+    QMessageBox errormessage;
+    std::string nameforsearching = name;
+    Contact::ContactRecordSet allContacts;
+    dataSource.getAllContacts(allContacts);
+    Contact::ContactRecordSet::const_iterator contactrecoedsetIterator;
+    for(contactrecoedsetIterator=allContacts.begin();contactrecoedsetIterator!=allContacts.end();contactrecoedsetIterator++)
+    {
+        std::string ListItemfirstName = contactrecoedsetIterator->firstName.c_str();
+        if(nameforsearching==ListItemfirstName)
+        {
+           Contact::ContactId searchcontactid= contactrecoedsetIterator->id;
+           return searchcontactid;
+        }
+       else
+        errormessage.setText("No such Contact");
+        errormessage.exec();
+    }
+
+ }

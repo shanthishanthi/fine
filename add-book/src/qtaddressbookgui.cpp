@@ -44,7 +44,8 @@ void QtAddressBookGUI::createWidgets()
     newContactButton = new QPushButton("New Contact");
     editContactButton = new QPushButton("Edit");
     deleteContactButton = new QPushButton("Delete");
-    findContactButton = new QPushButton("Find");
+    searchContactButton = new QPushButton("Search");
+    searchContactField = new QLineEdit("Enter first name to search");
     quitContactButton = new QPushButton("Quit");
 
     newContactButton->setObjectName(QString::fromUtf8("newContactButton"));
@@ -57,8 +58,8 @@ void QtAddressBookGUI::createWidgets()
     deleteContactButton->setObjectName(QString::fromUtf8("editContactButton"));
     deleteContactButton->setIcon(QIcon(QPixmap("E:/gitfolder/add-book/Tulips.jpg")));
 
-    findContactButton->setObjectName(QString::fromUtf8("newContactButton"));
-    findContactButton->setIcon(QIcon(QPixmap("E:/gitfolder/add-book/Tulips.jpg")));
+    searchContactButton->setObjectName(QString::fromUtf8("newContactButton"));
+    searchContactButton->setIcon(QIcon(QPixmap("E:/gitfolder/add-book/Tulips.jpg")));
 
     quitContactButton = new QPushButton("Quit");
     quitContactButton->setIcon(QIcon(QPixmap("E:/gitfolder/add-book/Tulips.jpg")));
@@ -68,7 +69,8 @@ void QtAddressBookGUI::createWidgets()
     buttonLayout->addWidget(newContactButton);
     buttonLayout->addWidget(editContactButton);
     buttonLayout->addWidget(deleteContactButton);
-    buttonLayout->addWidget(findContactButton);
+    buttonLayout->addWidget(searchContactField);
+    buttonLayout->addWidget(searchContactButton);
     buttonLayout->addWidget(quitContactButton);
 
     QVBoxLayout *rightSideLayout = new QVBoxLayout();
@@ -93,6 +95,9 @@ void QtAddressBookGUI::createWidgets()
 
     connect(editContactButton, SIGNAL(clicked()),
             this, SLOT(editContact()));
+
+    connect(searchContactButton, SIGNAL(clicked()),
+            this, SLOT(searchContact()));
 
     connect(quitContactButton, SIGNAL (clicked()),
             this, SLOT(quitContact()));
@@ -230,6 +235,15 @@ void QtAddressBookGUI::deleteContact()
         return;
     }
 }
+
+void QtAddressBookGUI::searchContact()
+{
+   std::string nameToSearch=searchContactField->text().toStdString();
+   Contact::ContactId idOfSearchedItem=list->searchList(nameToSearch);
+   detailView->clear();
+   detailView->displayContact(idOfSearchedItem);
+}
+
 void QtAddressBookGUI::quitContact()
 {
 

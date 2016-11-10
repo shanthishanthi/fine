@@ -243,7 +243,7 @@ ErrorInfo SQLiteDataSource::deleteContact(Contact::ContactId id)
 {
 
     //create sql prepared statement
-    std::string sqlStr = "DELETE FROM contacts WHERE id=?;";
+    std::string sqlStr = "DELETE FROM cont WHERE id=?;";
     
     SQLiteStatementHandle deleteStatement(sqlStr, database.get()); 
 
