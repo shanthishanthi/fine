@@ -105,9 +105,9 @@ Contact::ContactId QtContactList::searchList(std::string name)
            Contact::ContactId searchcontactid= contactrecoedsetIterator->id;
            return searchcontactid;
         }
-       else
+    }
         errormessage.setText("No such Contact");
         errormessage.exec();
-    }
+
 
  }
